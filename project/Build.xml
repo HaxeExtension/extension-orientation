@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml>
+    <include name="${HXCPP}/build-tool/BuildCommon.xml" />
+    <set name="DEBUGEXTRA" value="-debug" if="fulldebug" />
+
+    <files id="common">
+        <compilerflag value="-Iinclude" />
+        <file name="src/ExternalInterface.cpp" />
+    </files>
+
+    <files id="ios">
+        <compilerflag value="-Iinclude" />
+        <compilerflag value="-Iinclude/SDL2" />
+        <compilerflag value="-Iinclude/SDL2/configs/default" />
+        <file name="src/ios/EsOrientation.mm" />
+    </files>
+
+    <files id="common-legacy">
+        <compilerflag value="-I_legacy/include" />
+        <file name="_legacy/src/ExternalInterface.cpp" />
+    </files>
+
+    <files id="ios-legacy">
+        <compilerflag value="-I_legacy/include" />
+        <file name="_legacy/src/ios/EsOrientation.mm" />
+    </files>
+
+    <target
+        id="ndll"
+        output="${LIBPREFIX}es_orientation${DEBUGEXTRA}${LIBEXTRA}"
+        tool="linker"
+        toolid="${STD_MODULE_LINK}"
+    >
+        <outdir name="../ndll/${BINDIR}" />
+        <files id="common" />
+        <files id="ios" if="ios" />
+    </target>
+
+    <target
+        id="ndll-legacy"
+        output="${LIBPREFIX}es_orientation_legacy${DEBUGEXTRA}${LIBEXTRA}"
+        tool="linker"
+        toolid="${STD_MODULE_LINK}"
+    >
+        <outdir name="../ndll/${BINDIR}" />
+        <files id="common-legacy" />
+        <files id="ios-legacy" if="ios"/>
+    </target>
+
+    <target id="default">
+        <target id="ndll" if="ios" unless="legacy" />
+        <target id="ndll-legacy" if="ios legacy" />
+    </target>
+</xml>

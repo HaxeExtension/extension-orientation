@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <ndll name="es_orientation" if="ios" unless="legacy" />
+    <ndll name="es_orientation_legacy" if="ios legacy" />
+
+    <dependency name="es-orientation" path="dependencies/android" if="android" />
+    <android extension="org.haxe.extension.esorientation.EsOrientation" />
+</project>
