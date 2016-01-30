@@ -22,3 +22,7 @@ EsOrientation.setScreenOrientation(EsOrientation.ORIENTATION_UNSPECIFIED);
 ```
 
 That's all.
+
+## Additional
+
+[Related blog post](http://blog.zame-dev.org/openfl-extension-in-10-steps/)
