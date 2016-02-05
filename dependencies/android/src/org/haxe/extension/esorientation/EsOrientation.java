@@ -8,6 +8,8 @@ public class EsOrientation extends Extension {
     public static final int ORIENTATION_PORTRAIT = 1;
     public static final int ORIENTATION_LANDSCAPE = 2;
 
+    private static int fixedOrientation = 0;
+
     public static void setRequestedOrientation(int haxeScreenOrientation) {
         int requestedOrientation;
 
@@ -17,7 +19,7 @@ public class EsOrientation extends Extension {
                 break;
 
             case ORIENTATION_LANDSCAPE:
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE;
                 break;
 
             default:
@@ -25,5 +27,15 @@ public class EsOrientation extends Extension {
         }
 
         Extension.mainActivity.setRequestedOrientation(requestedOrientation);
+        fixedOrientation = requestedOrientation;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (fixedOrientation != 0) {
+            Extension.mainActivity.setRequestedOrientation(fixedOrientation);
+        }
     }
 }
