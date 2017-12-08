@@ -1,6 +1,6 @@
 {
-    "name": "es-orientation",
-    "url": "https://github.com/restorer/haxe-es-orientation/",
+    "name": "extension-orientation",
+    "url": "https://github.com/HaxeExtension/extension-orientation/",
     "license": "BSD",
     "tags": ["cross", "openfl", "orientation"],
     "description": "Set screen orientation at runtime.",

@@ -1,0 +1,29 @@
+Test if we need it:
+
+----
+
+```
+Stage.shouldRotateInterface = function (orientation:Int):Bool {
+    if (initOrientation == Stage.OrientationLandscapeLeft
+        || initOrientation == Stage.OrientationLandscapeRight
+        || initOrientation == Stage.OrientationLandscapeAny
+    ) {
+        return (orientation == Stage.OrientationLandscapeLeft || orientation == Stage.OrientationLandscapeRight);
+    }
+
+    if (initOrientation == Stage.OrientationPortrait
+        || initOrientation == Stage.OrientationPortraitUpsideDown
+        || initOrientation == Stage.OrientationPortraitAny
+    ) {
+        return (orientation == Stage.OrientationPortrait || orientation == Stage.OrientationPortraitUpsideDown);
+    }
+
+    return false;
+}
+```
+
+`initOrientation = Stage.getOrientation ();` (but must be done at resize event, otherwise 0 if too early)
+
+----
+
+Credits to: markus.stefanko@gmail.com
