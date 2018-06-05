@@ -1,9 +1,9 @@
-package org.haxe.extension.esorientation;
+package org.haxe.extension.orientation;
 
 import android.content.pm.ActivityInfo;
 import org.haxe.extension.Extension;
 
-public class EsOrientation extends Extension {
+public class Orientation extends Extension {
     public static final int ORIENTATION_UNSPECIFIED = 0;
     public static final int ORIENTATION_PORTRAIT = 1;
     public static final int ORIENTATION_LANDSCAPE = 2;
