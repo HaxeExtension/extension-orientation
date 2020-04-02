@@ -5,11 +5,11 @@ package extension.eightsines;
 #end
 
 #if android
-	#if (openfl < "4.0.0")
-	import openfl.utils.JNI;
-	#else
-	import lime.system.JNI;
-	#end
+    #if (openfl < "4.0.0")
+        import openfl.utils.JNI;
+    #else
+        import lime.system.JNI;
+    #end
 #end
 
 #if legacy
@@ -45,16 +45,18 @@ class EsOrientation {
         #if android
             setRequestedOrientationNative(screenOrientation);
         #elseif legacy
-            switch (screenOrientation) {
-                case ORIENTATION_PORTRAIT:
-                    Stage.setFixedOrientation(Stage.OrientationPortraitAny);
+            #if !neko
+                switch (screenOrientation) {
+                    case ORIENTATION_PORTRAIT:
+                        Stage.setFixedOrientation(Stage.OrientationPortraitAny);
 
-                case ORIENTATION_LANDSCAPE:
-                    Stage.setFixedOrientation(Stage.OrientationLandscapeAny);
+                    case ORIENTATION_LANDSCAPE:
+                        Stage.setFixedOrientation(Stage.OrientationLandscapeAny);
 
-                default:
-                    Stage.setFixedOrientation(Stage.OrientationAny);
-            }
+                    default:
+                        Stage.setFixedOrientation(Stage.OrientationAny);
+                }
+            #end
 
             #if ios
                 recheckScreenOrientationNative(screenOrientation);
